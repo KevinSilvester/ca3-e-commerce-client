@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+   --slate-50: 209 29% 75%;
+   --slate-100: 212 24% 70%;
+   --slate-200: 212 19% 68%;
+   --slate-300: 208 20% 62%;
+   --slate-400: 208 12% 45%;
+
+   --blue-100: 205 92% 42%;
+   --blue-200: 203 100% 72%;
+
+   --navy-100: 216 37% 22%;
+   --navy-200: 213 42% 17%;
+   --navy-300: 212 30% 17%;
+   --navy-400: 213 41% 14%;
+   --navy-500: 216 37% 14%;
+   --navy-600: 211 51% 9%;
+   --navy-700: 235 21% 21%;
+
+   --white-100: 0 0% 100%;
+   --white-200: 210 30% 92%;
+
+   --grey-100: 210 18% 31%;
+   --grey-200: 206 25% 20%;
+}
+
+body {
+   @apply font-nunito scroll-smooth bg-custom-white-200 text-custom-grey-100;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+   -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+%search-reset {
+   @apply px-0 outline-none shadow-none border-none ring-transparent;
+}
+
+[type='search'] {
+   @extend %search-reset;
+
+   &:focus {
+      @extend %search-reset;
+   }
+   &::-webkit-search-cancel-button,
+   &::-webkit-search-decoration {
+      -webkit-appearance: none;
+      appearance: none;
+   }
+}
+
+.scrollbar-hidden {
+   scrollbar-width: none;
+   &::-webkit-scrollbar {
+      display: none;
+   }
+ }

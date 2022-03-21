@@ -1,24 +1,82 @@
 import { Component } from 'react'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import axios from 'axios'
+import HomePage from './components/HomePage'
+import './scss/styles.scss'
 
 export default class App extends Component {
-   componentDidMount() {
-      let formData = new FormData()
-      formData.append('name', 'name')
-      console.log(formData.get('name'))
-      axios.post(`http://localhost:4000/api/users/register`, formData, {
-         headers: { 'Content-type': 'multipart/form-data' }
-      }).then(res => console.log(res))
-   }
+   
+
+
    render() {
       return (
          <>
-            <div>
-               hello world
-               <br />
-               <span>It's a me! Mario!</span>
-            </div>
+            <BrowserRouter>
+               <Routes>
+                  {/* All products/home page */}
+                  <Route index element={<HomePage />}/>
+                  {/* Single Product page */}
+                  <Route path='product/:id' element={null} />
+                  <Route path='product' element={<Navigate to='/' />} />
+                  <Route path='*' element={<Navigate to='/' />} />
+               </Routes>
+            </BrowserRouter>
          </>
       )
    }
 }
+
+// import React, {Component} from "react"
+// import {BrowserRouter, Switch, Route} from "react-router-dom"
+
+// import "bootstrap/dist/css/bootstrap.css"
+// import "./css/App.css"
+
+// import Register from "./components/Register"
+// import ResetDatabase from "./components/ResetDatabase"
+// import Login from "./components/Login"
+// import Logout from "./components/Logout"
+// import AddCar from "./components/AddCar"
+// import EditCar from "./components/EditCar"
+// import DeleteCar from "./components/DeleteCar"
+// import DisplayAllCars from "./components/DisplayAllCars"
+// import LoggedInRoute from "./components/LoggedInRoute"
+// import BuyCar from "./components/BuyCar"
+// import PayPalMessage from "./components/PayPalMessage"
+
+// import {ACCESS_LEVEL_GUEST} from "./config/global_constants"
+
+
+// if (typeof localStorage.accessLevel === "undefined")
+// {
+//     localStorage.name = "GUEST"
+//     localStorage.accessLevel = ACCESS_LEVEL_GUEST
+//     localStorage.token = null
+//     localStorage.profilePhoto = null
+// }
+
+    
+// export default class App extends Component 
+// {
+//     render() 
+//     {
+//         return (
+//             <BrowserRouter>
+//                 <Switch>
+//                     <Route exact path="/Register" component={Register} />
+//                     <Route exact path="/ResetDatabase" component={ResetDatabase} />                    
+//                     <Route exact path="/" component={DisplayAllCars} />
+//                     <Route exact path="/Login" component={Login} />
+//                     <Route exact path="/BuyCar/:id" component={BuyCar} />
+//                     <Route exact path="/PayPalMessage/:messageType/:payPalPaymentID" component={PayPalMessage}/>                     
+//                     <LoggedInRoute exact path="/Logout" component={Logout} />
+//                     <LoggedInRoute exact path="/AddCar" component={AddCar} />
+//                     <LoggedInRoute exact path="/EditCar/:id" component={EditCar} />
+//                     <LoggedInRoute exact path="/DeleteCar/:id" component={DeleteCar} />
+//                     <Route exact path="/DisplayAllCars" component={DisplayAllCars}/> 
+//                     <Route path="*" component={DisplayAllCars}/>                            
+//                 </Switch>
+//             </BrowserRouter>
+//         )
+//     }
+// }
